@@ -1,0 +1,23 @@
+﻿@using TryHarder.Models
+@model SearchViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>TryHarder.gg</h1>
+    <p class="lead">TryHarder is a tool that does math and tells you how to get better at League.</p>
+</div>
+
+@using (Html.BeginForm("Results", "Search", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.SummonerName, new { @class = "form-control", placeholder = "Summoner Name" })
+        @Html.ValidationMessageFor(m => m.SummonerName)
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(m => m.SelectedRegionId, Model.Regions, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SelectedRegionId)
+    </div>
+    <button type="submit" class="btn btn-primary">Do math!</button>
+}
