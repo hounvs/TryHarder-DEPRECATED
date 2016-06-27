@@ -30,14 +30,15 @@ namespace TryHarder.Controllers
         public ActionResult Results(string SummonerName, string Region)
         {
             SearchViewModel model = new SearchViewModel();
-            if(model.Regions.Any(i => i.Text.Equals(Region)))
+            //validate summoner name is entered and region exists
+            if(!String.IsNullOrWhiteSpace(SummonerName) && model.Regions.Any(i => i.Text.Equals(Region)))
             {
                 model.SummonerName = SummonerName;
                 model.RegionName = Region;
                 return View(model);
             }
 
-            //if invalid region
+            //if invalid region, redirect to home
             return RedirectToAction("Index");
         }
 

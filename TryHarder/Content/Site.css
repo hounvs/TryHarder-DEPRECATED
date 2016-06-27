@@ -16,9 +16,21 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+/* Set background image of the element to the logo */
+.bglogo {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('Images/Tryharder Logo.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.2;
+    filter:alpha(opacity=40);
+    height:100%;
+    width:100%;
 }
+
