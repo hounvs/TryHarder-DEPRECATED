@@ -2,49 +2,28 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
+using TryHarder.Helpers;
 
 namespace TryHarder.Models
 {
-    public class Region
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public Region(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-    }
+    
 
     public class SearchViewModel
     {
-        public List<Region> RegionsList = new List<Region>
-        {
-            new Region(0, "North America"),
-            new Region(1, "EU West"),
-            new Region(2, "EU Nordic & East"),
-            new Region(3, "Latin America North"),
-            new Region(4, "Latin America South"),
-            new Region(5, "Brazil"),
-            new Region(6, "Russia"),
-            new Region(7, "Turkey"),
-            new Region(8, "Oceania"),
-            new Region(9, "Republic of Korea"),
-            new Region(10, "Japan")
-        };
-
-        [Display(Name = "Region")]
+        [Display(Name = "Region Id")]
         public int SelectedRegionId { get; set; }
 
         [Display(Name = "Summoner Name")]
         public string SummonerName { get; set; }
-        
+
+        [Display(Name = "Region Name")]
+        public string RegionName { get; set; }
+
         public IEnumerable<SelectListItem> Regions
         {
             get
             {
-                var allRegions = RegionsList.Select(r => new SelectListItem
+                IEnumerable<SelectListItem> allRegions = RegionConstants.RegionsList.Select(r => new SelectListItem
                 {
                     Value = r.Id.ToString(),
                     Text = r.Name
