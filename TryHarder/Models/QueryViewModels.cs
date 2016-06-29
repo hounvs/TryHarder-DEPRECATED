@@ -32,6 +32,14 @@ namespace TryHarder.Models
             }
         }
     }
+
+    public class ResultsViewModel
+    {
+        [Display(Name = "Summoner")]
+        public Summoner summoner;
+
+        public IList<SummonerMatchQuarter> matchQuarters;
+    }
 }
 
 /*

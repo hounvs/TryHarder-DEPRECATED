@@ -10,6 +10,8 @@ namespace TryHarder.Controllers
 {
     public class SearchController : Controller
     {
+        private LoLDb db = new LoLDb();
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -29,16 +31,34 @@ namespace TryHarder.Controllers
         [HttpGet]
         public ActionResult Results(string SummonerName, string Region)
         {
-            SearchViewModel model = new SearchViewModel();
+            SearchViewModel searchModel = new SearchViewModel();
             //validate summoner name is entered and region exists
-            if(!String.IsNullOrWhiteSpace(SummonerName) && model.Regions.Any(i => i.Text.Equals(Region)))
+            if(!String.IsNullOrWhiteSpace(SummonerName) && searchModel.Regions.Any(i => i.Text.Equals(Region)))
             {
-                model.SummonerName = SummonerName;
-                model.RegionName = Region;
-                return View(model);
+                // get db row where db row name equals entered name, case insensitive
+                //IQueryable<Summoner> Summoner = db.Summoners.Where(x => x.Summoner1.ToLower().Equals(SummonerName.ToLower()));
+                long summonerId = long.Parse(SummonerName);
+                IQueryable<Summoner> Summoner = db.Summoners.Where(x => x.SummonerID == summonerId);
+
+                if (Summoner.Any())
+                {
+                    ResultsViewModel resultsModel = new ResultsViewModel();
+                    resultsModel.summoner = Summoner.FirstOrDefault();
+
+                    IQueryable<SummonerMatchQuarter> matchQuarters = db.SummonerMatchQuarters.Where(x => x.SummonerID == summonerId).Take(20);
+                    resultsModel.matchQuarters = matchQuarters.ToList();
+
+                    return View(resultsModel);
+                } else
+                {
+                    // summoner not found error
+                }
+            } else
+            {
+                // region not found error
             }
 
-            //if invalid region, redirect to home
+            //if something breaks, go home
             return RedirectToAction("Index");
         }
 
