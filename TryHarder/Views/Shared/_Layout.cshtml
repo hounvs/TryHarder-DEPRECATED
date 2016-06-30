@@ -9,32 +9,32 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-full navbar-dark bg-inverse">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("TryHarder", "Index", "Search", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
+            @Html.ActionLink("TryHarder", "Index", "Search", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler hidden-sm-up pull-xs-right pull-sm-right pull-md-right pull-lg-right"
+                    type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+                &#9776;
+            </button>
+            <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Search", "Index", "Search")</li>
-                    <li>@Html.ActionLink("About", "About", "Search")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Search")</li>
+                    <li class="nav-item active">@Html.ActionLink("Search", "Index", "Search", new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("About", "About", "Search", new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("Contact", "Contact", "Search", new { @class = "nav-link" })</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav pull-xs-right pull-sm-right pull-md-right pull-lg-right">
+                    @Html.Partial("_LoginPartial")
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         <div class="bglogo"></div>
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - TryHarder</p>
+            <nav class="navbar navbar-small navbar-fixed-bottom navbar-dark bg-inverse">
+                <p class="nav-item">&copy; @DateTime.Now.Year - TryHarder</p>
+            </nav>
         </footer>
     </div>
 

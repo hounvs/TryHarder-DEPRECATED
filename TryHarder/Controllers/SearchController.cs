@@ -45,7 +45,7 @@ namespace TryHarder.Controllers
                     ResultsViewModel resultsModel = new ResultsViewModel();
                     resultsModel.summoner = Summoner.FirstOrDefault();
 
-                    IQueryable<SummonerMatchQuarter> matchQuarters = db.SummonerMatchQuarters.Where(x => x.SummonerID == summonerId).Take(20);
+                    IQueryable<SummonerMatchQuarter> matchQuarters = db.SummonerMatchQuarters.Where(x => x.SummonerID == summonerId).Take(100);
                     resultsModel.matchQuarters = matchQuarters.ToList();
 
                     return View(resultsModel);

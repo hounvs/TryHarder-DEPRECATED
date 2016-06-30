@@ -1,12 +1,8 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -28,9 +24,12 @@
     background-image: url('Images/Tryharder Logo.png');
     background-repeat: no-repeat;
     background-size: 100%;
-    opacity: 0.1;
+    opacity: 0.05;
     filter:alpha(opacity=40);
     height:100%;
     width:100%;
 }
 
+.navbar-small {
+    height: 36px;
+}
