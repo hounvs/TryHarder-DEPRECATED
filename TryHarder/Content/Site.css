@@ -16,20 +16,21 @@
 .bglogo {
     content: "";
     position: absolute;
-    z-index: -1;
-    top: 0;
+    z-index: -100;
+    top: 3.5rem;
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url('Images/Tryharder Logo.png');
+    background-image: url('Images/TryHarder Logo Color.png');
     background-repeat: no-repeat;
-    background-size: 100%;
-    opacity: 0.05;
-    filter:alpha(opacity=40);
+    background-size: contain;
+    background-position: center;
+    opacity: 0.1;
+    filter:alpha(opacity=10);
     height:100%;
     width:100%;
 }
 
 .navbar-small {
-    height: 36px;
+    height: 2.25rem;
 }
