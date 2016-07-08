@@ -31,6 +31,44 @@
     width:100%;
 }
 
+/* Navbar footer */
 .navbar-small {
     height: 2.25rem;
+}
+
+/* Bar graph */
+/*
+.chart rect {
+  fill: steelblue;
+}
+*/
+.chart .chartLegend {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: start;
+  font-size: 12px;
+}
+
+.chart .chartValue {
+  fill: black;
+  font: 12px sans-serif;
+  text-anchor: start;
+  transform: translateX(0.3em);
+}
+
+.chart .chartLabel {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: end;
+}
+
+.bar:hover {
+  fill: gold;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
