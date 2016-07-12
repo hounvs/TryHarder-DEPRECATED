@@ -1,17 +1,37 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿@using System.Security.Claims;
+
+<script src="https://cdn.auth0.com/js/lock-9.1.min.js"></script>
+<script type="text/javascript">
+
+  var lock = new Auth0Lock('Uoy9QalVVvxYs0iAqRwe1ECHEyEe3L2E', 'hounvs.auth0.com');
+
+
+  function signin() {
+    lock.show({
+        callbackURL: 'http://localhost:55484/LoginCallback.ashx'
+      , responseType: 'code'
+      , authParams: {
+        scope: 'openid email'  // Learn about scopes: https://auth0.com/docs/scopes
+      }
+    });
+  }
+</script>
+
+@if (User.Identity.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-    {
-        @Html.AntiForgeryToken()
-        <li class="nav-item active">
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
-        </li>
-        <li class="nav-item active"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a></li>
-    }
+    <li class="nav-item active">
+        @ClaimsPrincipal.Current.FindFirst("user_metadata").
+    </li>
+    <li class="nav-item active">
+        @Html.ActionLink("Logout", "Logout", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+    </li>
+    <li class="nav-item active">
+        @Html.ActionLink("Hello " + ClaimsPrincipal.Current.FindFirst("nickname").Value + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+    </li>
 }
 else
 {
-    <li class="nav-item active">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
-    <li class="nav-item active">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    <li class="nav-item active">
+        <a href="#" class="nav-link" onclick="window.signin();">Login</a>
+    </li>
 }
