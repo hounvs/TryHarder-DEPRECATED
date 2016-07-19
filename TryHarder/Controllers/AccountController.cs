@@ -11,12 +11,24 @@ using Microsoft.Owin.Security;
 using TryHarder.Models;
 using System.IdentityModel.Services;
 using System.Configuration;
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
+using System.Collections.Generic;
+using Auth0.AspNet;
+using Auth0.ManagementApi.Models;
+using System.Dynamic;
+using Auth0.ManagementApi;
 
 namespace TryHarder.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -48,5 +60,38 @@ namespace TryHarder.Controllers
                     ConfigurationManager.AppSettings["auth0:Domain"],
                     this.Server.UrlEncode(returnTo)));
         }
+
+        // TODO: Add update user function
+        //public async Task<ActionResult> UpdateUser(int SummonerId)
+        //{
+        //    var token = ClaimsPrincipal.Current.FindFirst("access_token").Value;
+        //    ManagementApiClient client = new ManagementApiClient(
+        //        ConfigurationManager.AppSettings["auth0:UpdateToken"],
+        //        new Uri(string.Format("https://{0}/v2", ConfigurationManager.AppSettings["auth0:Domain"])));
+        //    var updateUserRequest = new UserUpdateRequest();
+        //    updateUserRequest.AppMetadata = new ExpandoObject();
+        //    updateUserRequest.AppMetadata.SummonerId = SummonerId;
+        //    var userId = ClaimsPrincipal.Current.FindFirst("user_id").Value;
+        //    var updateUserResponse = await client.Users.UpdateAsync(userId, updateUserRequest);
+
+        //    return RedirectToAction("Index");
+        //}
     }
+
+    //public class UpdateCallback : HttpTaskAsyncHandler
+    //{
+    //    [Authorize]
+    //    public override async Task ProcessRequestAsync()
+    //    {
+    //        var token = ClaimsPrincipal.Current.FindFirst("access_token").Value;
+    //        ManagementApiClient client = new ManagementApiClient(token
+    //            /*ConfigurationManager.AppSettings["auth0:UpdateToken"]*/,
+    //            new Uri(string.Format("https://{0}/v2", ConfigurationManager.AppSettings["auth0:Domain"])));
+    //        var updateUserRequest = new UserUpdateRequest();
+    //        updateUserRequest.AppMetadata = new ExpandoObject();
+    //        updateUserRequest.AppMetadata.SummonerId = context.Request.QueryString["SummonerId"];
+    //        //var userId = ClaimsPrincipal.Current.FindFirst("user_id").Value;
+    //        var updateUserResponse = await client.Users.UpdateAsync(context.User.Identity.GetUserId(), updateUserRequest);
+    //    }
+    //}
 }

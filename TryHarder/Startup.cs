@@ -8,7 +8,6 @@ namespace TryHarder
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }

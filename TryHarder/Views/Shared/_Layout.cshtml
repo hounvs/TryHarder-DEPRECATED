@@ -12,20 +12,9 @@
     <nav class="navbar navbar-full navbar-dark bg-inverse">
         <div class="container">
             @Html.ActionLink("TryHarder", "Index", "Search", new { area = "" }, new { @class = "navbar-brand" })
-            <button class="navbar-toggler hidden-sm-up pull-xs-right pull-sm-right pull-md-right pull-lg-right"
-                    type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
-                &#9776;
-            </button>
-            <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item active">@Html.ActionLink("Search", "Index", "Search", new { @class = "nav-link" })</li>
-                    <li class="nav-item active">@Html.ActionLink("About", "About", "Search", new { @class = "nav-link" })</li>
-                    <li class="nav-item active">@Html.ActionLink("Contact", "Contact", "Search", new { @class = "nav-link" })</li>
-                </ul>
-                <ul class="nav navbar-nav pull-xs-right pull-sm-right pull-md-right pull-lg-right">
-                    @Html.Partial("_LoginPartial")
-                </ul>
-            </div>
+            <ul class="nav navbar-nav pull-xs-right pull-sm-right pull-md-right pull-lg-right">
+                @Html.Partial("_LoginPartial")
+            </ul>
         </div>
     </nav>
     <div class="body-content">
