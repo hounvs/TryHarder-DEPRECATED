@@ -269,6 +269,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Tier Icons\" />
     <Folder Include="Scripts\umd\" />
     <Folder Include="Views\Manage\" />
   </ItemGroup>
