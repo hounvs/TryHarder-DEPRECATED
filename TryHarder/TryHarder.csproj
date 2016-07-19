@@ -204,10 +204,9 @@
     <Compile Include="Models\Champion.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\LoLDb.cs" />
-    <Compile Include="Models\QueryViewModels.cs" />
+    <Compile Include="Models\SearchViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\SearchViewModels.cs" />
     <Compile Include="Models\Summoner.cs" />
     <Compile Include="Models\SummonerMatchQuarter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,6 +215,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Tier Icons\BronzeBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\ChallengerBadge.png" />
+    <Content Include="Content\Images\Tier Icons\DiamondBadge.png" />
+    <Content Include="Content\Images\Tier Icons\GoldBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\MasterBadge.png" />
+    <Content Include="Content\Images\Tier Icons\PlatinumBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\SilverBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\UnrankedBadge.png" />
     <Content Include="Content\Images\TryHarder Logo Color.png" />
     <Content Include="Content\Images\Tryharder Logo.png" />
     <Content Include="Content\tether.css" />
@@ -266,10 +273,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Search\Results.cshtml" />
+    <Content Include="Views\Search\Overview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\Tier Icons\" />
     <Folder Include="Scripts\umd\" />
     <Folder Include="Views\Manage\" />
   </ItemGroup>

@@ -15,13 +15,13 @@ namespace TryHarder.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            SearchViewModel model = new SearchViewModel();
+            QueryViewModel model = new QueryViewModel();
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Results(SearchViewModel model)
+        public ActionResult Results(QueryViewModel model)
         {
             //get name of selected region based on value from dropdown
             string SelectedRegionName = RegionConstants.RegionsList[model.SelectedRegionId].Name;
@@ -31,7 +31,7 @@ namespace TryHarder.Controllers
         [HttpGet]
         public ActionResult Results(string SummonerName, string Region)
         {
-            SearchViewModel searchModel = new SearchViewModel();
+            QueryViewModel searchModel = new QueryViewModel();
             //validate summoner name is entered and region exists
             if(!String.IsNullOrWhiteSpace(SummonerName) && searchModel.Regions.Any(i => i.Text.Equals(Region)))
             {
@@ -62,18 +62,13 @@ namespace TryHarder.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Overview()
         {
-            ViewBag.Message = "Your application description page.";
+            OverviewViewModel model = new OverviewViewModel();
+            //model.Farming.EarlyScore = 0.0;
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(model);
         }
     }
 }

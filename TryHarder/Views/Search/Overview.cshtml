@@ -1,0 +1,84 @@
+﻿@model TryHarder.Models.OverviewViewModel
+
+<h2>Overview</h2>
+
+<table class="table table-hover table-centered">
+    <thead class="thead-inverse">
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Early
+            </th>
+            <th>
+                Mid
+            </th>
+            <th>
+                Late
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="vert-header">@Model.Farming.Name</th>
+            <th>
+                @Model.Farming.EarlyScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Farming.MidScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Farming.LateScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+        </tr>
+        <tr>
+            <th class="vert-header">@Model.Fighting.Name</th>
+            <th>
+                @Model.Fighting.EarlyScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Fighting.MidScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Fighting.LateScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+        </tr>
+        <tr>
+            <th class="vert-header">@Model.Objectives.Name</th>
+            <th>
+                @Model.Objectives.EarlyScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Objectives.MidScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Objectives.LateScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+        </tr>
+        <tr>
+            <th class="vert-header">@Model.Efficiency.Name</th>
+            <th>
+                @Model.Efficiency.EarlyScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Efficiency.MidScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+            <th>
+                @Model.Efficiency.LateScore
+                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+            </th>
+        </tr>
+    </tbody>
+</table>
