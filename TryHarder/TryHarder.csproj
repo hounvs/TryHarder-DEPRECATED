@@ -204,7 +204,7 @@
     <Compile Include="Models\Champion.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\LoLDb.cs" />
-    <Compile Include="Models\SearchViewModels.cs" />
+    <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Summoner.cs" />
