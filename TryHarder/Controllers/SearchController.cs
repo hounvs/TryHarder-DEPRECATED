@@ -10,8 +10,6 @@ namespace TryHarder.Controllers
 {
     public class SearchController : Controller
     {
-        private LoLDb db = new LoLDb();
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -33,26 +31,9 @@ namespace TryHarder.Controllers
         {
             QueryViewModel searchModel = new QueryViewModel();
             //validate summoner name is entered and region exists
-            if(!String.IsNullOrWhiteSpace(SummonerName) && searchModel.Regions.Any(i => i.Text.Equals(Region)))
+            if(!string.IsNullOrWhiteSpace(SummonerName) && QueryViewModel.Regions.Any(i => i.Text.Equals(Region)))
             {
-                // get db row where db row name equals entered name, case insensitive
-                //IQueryable<Summoner> Summoner = db.Summoners.Where(x => x.Summoner1.ToLower().Equals(SummonerName.ToLower()));
-                long summonerId = long.Parse(SummonerName);
-                IQueryable<Summoner> Summoner = db.Summoners.Where(x => x.SummonerID == summonerId);
-
-                if (Summoner.Any())
-                {
-                    ResultsViewModel resultsModel = new ResultsViewModel();
-                    resultsModel.summoner = Summoner.FirstOrDefault();
-
-                    IQueryable<SummonerMatchQuarter> matchQuarters = db.SummonerMatchQuarters.Where(x => x.SummonerID == summonerId).Take(100);
-                    resultsModel.matchQuarters = matchQuarters.ToList();
-
-                    return View(resultsModel);
-                } else
-                {
-                    // summoner not found error
-                }
+               
             } else
             {
                 // region not found error
@@ -60,15 +41,6 @@ namespace TryHarder.Controllers
 
             //if something breaks, go home
             return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult Overview()
-        {
-            OverviewViewModel model = new OverviewViewModel();
-            //model.Farming.EarlyScore = 0.0;
-
-            return View(model);
         }
     }
 }

@@ -90,3 +90,7 @@ img.tier-icon {
     height: auto;
     width: 100%;
 }
+
+.text-center {
+    text-align: center;
+}

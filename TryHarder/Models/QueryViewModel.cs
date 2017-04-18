@@ -13,11 +13,11 @@ namespace TryHarder.Models
 
         [Display(Name = "Summoner Name")]
         public string SummonerName { get; set; }
-
-        [Display(Name = "Region Name")]
-        public string RegionName { get; set; }
-
-        public IEnumerable<SelectListItem> Regions
+        
+        /// <summary>
+        /// The list of available regions.
+        /// </summary>
+        public static IEnumerable<SelectListItem> Regions
         {
             get
             {
@@ -28,39 +28,6 @@ namespace TryHarder.Models
                 });
                 return allRegions;
             }
-        }
-    }
-
-    public class ResultsViewModel
-    {
-        [Display(Name = "Summoner")]
-        public Summoner summoner;
-
-        public IList<SummonerMatchQuarter> matchQuarters;
-    }
-
-    public class OverviewViewModel
-    {
-        public Scores Farming = new Scores("Farming");
-        public Scores Fighting = new Scores("Fighting");
-        public Scores Objectives = new Scores("Objectives");
-        public Scores Efficiency = new Scores("Efficiency");
-    }
-
-    public class Scores
-    {
-        public string Name { get; set; }
-        public double EarlyScore { get; set; }
-        public double MidScore { get; set; }
-        public double LateScore { get; set; }
-        public int Rank { get; set; }
-
-        public Scores(string Name)
-        {
-            this.Name = Name;
-            EarlyScore = 0.0;
-            MidScore = 0.0;
-            LateScore = 0.0;
         }
     }
 }
