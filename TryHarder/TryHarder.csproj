@@ -192,6 +192,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SessionAuthenticationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\MetricsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -199,6 +200,7 @@
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Models\ChampionModel.cs" />
     <Compile Include="Models\MetricModel.cs" />
+    <Compile Include="Models\NamedModel.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\RoleGroupModel.cs" />
     <Compile Include="Models\SummonerModel.cs" />
@@ -219,7 +221,9 @@
     <Content Include="Content\Images\Tier Icons\UnrankedBadge.png" />
     <Content Include="Content\Images\TryHarder Logo Color.png" />
     <Content Include="Content\Images\Tryharder Logo.png" />
-    <Content Include="Content\sample.xml" />
+    <Content Include="Content\sample.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\tether.css" />
     <Content Include="Content\tether.min.css" />
     <Content Include="favicon.ico" />
@@ -230,6 +234,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\07b76bfe-0ee0-4-231-b9ee - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\07b76bfe-0ee0-4-231-b9ee - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\d3.v3.min.js" />
     <Content Include="Scripts\horizBarChart.js" />
@@ -264,6 +270,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Search\Overview.cshtml" />
+    <Content Include="Views\Metrics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
