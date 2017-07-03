@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -7,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using TryHarder.Models;
+using TryHarder.Models.ViewModels;
 
 namespace TryHarder.Controllers
 {
@@ -14,84 +18,98 @@ namespace TryHarder.Controllers
     {
         // GET: Metrics
         public ActionResult Index()
-        {
-            string path = Server.MapPath("~/content/sample.xml");
-            XDocument SummonerMetrics = XDocument.Load(path);
-
-            SummonerModel Summoner = new SummonerModel(SummonerMetrics.Root.Element("Summoner"));
-            return View(Summoner);
+        {            
+            return View(GetSummonerViewModel());
         }
 
-        // GET: Metrics/Details/5
-        public ActionResult Details(int id)
+        // GET: Metrics/Champion/5
+        public ActionResult Champion(int? SelectedChampion)
         {
-            return View();
-        }
-
-        // GET: Metrics/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Metrics/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            SummonerViewModel model = GetSummonerViewModel();
+            
+            if (SelectedChampion != null)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                model.SelectedChampion = model.Summoner.Champions.FirstOrDefault(c => c.ID == SelectedChampion);
             }
-            catch
+            else
             {
-                return View();
+                //// TODO: Redirect to another action to show overall stats
+                model.SelectedChampion = model.Summoner.Champions.FirstOrDefault();
             }
+
+            return View(model);
         }
 
-        // GET: Metrics/Edit/5
-        public ActionResult Edit(int id)
+        //public ActionResult Champion(string Champion)
+        //{
+        //    return RedirectToAction("Champion", int.Parse(Champion));
+        //}
+
+        private SummonerViewModel GetSummonerViewModel()
         {
-            return View();
+            if (Session["Model"] == null)
+            {
+                SummonerViewModel summonerViewModel = new SummonerViewModel();
+
+                try
+                {
+                    // Load XML via database
+                    XDocument SummonerMetrics = GetOnlineMetrics("GundayMonday");
+
+                    // Load XML via local file
+                    //XDocument SummonerMetrics = GetOfflineMetrics("~/content/sample.xml");
+
+                    summonerViewModel.Summoner = new SummonerModel(SummonerMetrics.Root.Element("Summoner"));
+                }
+                catch(Exception ex)
+                {
+                    // TODO: Something useful
+                    summonerViewModel.Summoner = new SummonerModel();
+                }
+                finally
+                {
+                    HttpContext.Session.Add("Model", summonerViewModel);
+                }
+            }
+
+            return Session["Model"] as SummonerViewModel;
         }
 
-        // POST: Metrics/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private XDocument GetOnlineMetrics(string summonerName)
         {
-            try
-            {
-                // TODO: Add update logic here
+            XDocument SummonerMetrics = new XDocument();
 
-                return RedirectToAction("Index");
-            }
-            catch
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["LoLDb"].ConnectionString))
+            using (var command = new SqlCommand("[LoL].[SummonerMetrics_XML]", conn))
             {
-                return View();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Summoner", summonerName));
+                ////command.Parameters.Add(new SqlParameter("@Champion", custId));
+                ////command.Parameters.Add(new SqlParameter("@RoleGroup", custId));
+
+                conn.Open();
+
+                using (var response = command.ExecuteXmlReader())
+                {
+                    while (response.Read())
+                    {
+                        SummonerMetrics = XDocument.Load(response);
+                    }
+                }
             }
+
+            return SummonerMetrics;
         }
 
-        // GET: Metrics/Delete/5
-        public ActionResult Delete(int id)
+        private XDocument GetOfflineMetrics(string XMLPath)
         {
-            return View();
-        }
+            string path = Server.MapPath(XMLPath);
 
-        // POST: Metrics/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return XDocument.Load(path);
         }
     }
 }

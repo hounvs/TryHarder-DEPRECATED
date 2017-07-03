@@ -193,7 +193,6 @@
     <Compile Include="App_Start\SessionAuthenticationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MetricsController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,10 +200,10 @@
     <Compile Include="Models\ChampionModel.cs" />
     <Compile Include="Models\MetricModel.cs" />
     <Compile Include="Models\NamedModel.cs" />
-    <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\RoleGroupModel.cs" />
     <Compile Include="Models\SummonerModel.cs" />
     <Compile Include="Models\TimeBucketModel.cs" />
+    <Compile Include="Models\ViewModels\SummonerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -266,11 +265,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Search\Overview.cshtml" />
     <Content Include="Views\Metrics\Index.cshtml" />
+    <Content Include="Views\Metrics\Champion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

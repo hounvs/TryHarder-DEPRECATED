@@ -17,7 +17,7 @@
     content: "";
     position: absolute;
     z-index: -100;
-    top: 3.5rem;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -34,43 +34,6 @@
 /* Navbar footer */
 .navbar-small {
     height: 2.25rem;
-}
-
-/* Bar graph */
-/*
-.chart rect {
-  fill: steelblue;
-}
-*/
-.chart .chartLegend {
-  fill: black;
-  font: 14px sans-serif;
-  text-anchor: start;
-  font-size: 12px;
-}
-
-.chart .chartValue {
-  fill: black;
-  font: 12px sans-serif;
-  text-anchor: start;
-  transform: translateX(0.3em);
-}
-
-.chart .chartLabel {
-  fill: black;
-  font: 14px sans-serif;
-  text-anchor: end;
-}
-
-.bar:hover {
-  fill: gold;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
 }
 
 table.table-centered td, th {

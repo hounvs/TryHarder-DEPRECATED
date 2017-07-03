@@ -1,47 +1,24 @@
-﻿@model TryHarder.Models.SummonerModel
+﻿@model TryHarder.Models.ViewModels.SummonerViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name: @Model.ID</h2>
 
-@foreach (var Champion in Model.Champions)
-{
-    <h3>Champion: @Champion.Name</h3>
+<div class="col-md-12 text-center">
+    <h2>@Model.Summoner.Name: @Model.Summoner.ID</h2>
 
-    foreach (var RoleGroup in Champion.RoleGroups)
+    @using (Html.BeginForm("Champion/", "Metrics", FormMethod.Get, new { @class = "form-inline" }))
     {
-        <h4>Role: @RoleGroup.Name</h4>
+        // Champion Selection dropdown
+        <div class="input-group">
+            @Html.Label("Champion", new { @class = "input-group-addon", @for = "championDrp" })
+            @Html.DropDownListFor(viewModel => viewModel.SelectedChampion,
+                new SelectList(Model.Summoner.Champions, "ID", "Name"),
+                "All", new { @class = "form-control", id = "championDrp" })
+        </div>
 
-        foreach ( var TimeBucket in RoleGroup.TimeBuckets)
-        {
-            <table class="table table-bordered">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th></th>
-                        <th>@TimeBucket.Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var Metric in TimeBucket.Metrics)
-                    {
-                        <tr>
-                            <td>@Metric.Name</td>
-                            <td>
-                                Bin: @Metric.Bin<br />
-                                Category: @Metric.Category<br />
-                                Games: @Metric.Games<br />
-                                Grain: @Metric.Grain<br />
-                                Percent: @Metric.Percent<br />
-                                Pop: @Metric.Pop<br />
-                                Value: @Metric.Value<br />
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
+        <button type="submit" class="btn btn-sm btn-primary">Go!</button>
     }
-}
+</div>

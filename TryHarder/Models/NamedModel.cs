@@ -2,12 +2,23 @@
 {
     public class NamedModel
     {
-        internal static string DefaultName = string.Empty;
-        internal static int DefaultID = -1;
+        public static string DefaultName = string.Empty;
+        public static int DefaultID = -1;
 
-        public string Name;
+        private string name;
+        private int id;
 
-        public int ID;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         public NamedModel()
         {
