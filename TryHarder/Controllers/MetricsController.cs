@@ -23,18 +23,28 @@ namespace TryHarder.Controllers
         }
 
         // GET: Metrics/Champion/5
-        public ActionResult Champion(int? SelectedChampion)
+        public ActionResult Champion(string id)
         {
             SummonerViewModel model = GetSummonerViewModel();
-            
-            if (SelectedChampion != null)
-            {
-                model.SelectedChampion = model.Summoner.Champions.FirstOrDefault(c => c.ID == SelectedChampion);
-            }
-            else
+
+            int SelectedChampionId;
+
+            // No SelectedChampion, load all stats
+            if (string.IsNullOrEmpty(id))
             {
                 //// TODO: Redirect to another action to show overall stats
                 model.SelectedChampion = model.Summoner.Champions.FirstOrDefault();
+            }
+            // Parse SelectedChampion as an ID
+            else if (int.TryParse(id, out SelectedChampionId))
+            {
+                model.SelectedChampion = model.Summoner.Champions.FirstOrDefault(c => c.ID == SelectedChampionId);
+            }
+            // Parse SelectedChampion as a champ name
+            else
+            {
+                id = id.ToLowerInvariant();
+                model.SelectedChampion = model.Summoner.Champions.FirstOrDefault(c => c.Name.ToLowerInvariant() == id);
             }
 
             return View(model);
