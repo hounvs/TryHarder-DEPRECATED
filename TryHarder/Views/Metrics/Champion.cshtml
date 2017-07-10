@@ -1,5 +1,11 @@
 ﻿@model TryHarder.Models.ViewModels.SummonerViewModel
 
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/External/jquery.easing.1.3.js")"></script>
+    <script src="@Url.Content("~/Scripts/Site/Champion.js")"></script>
+}
+
 @{
     ViewBag.Title = "Champion";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +13,7 @@
 
 @if (Model.SelectedChampion?.RoleGroups.Any() ?? false)
 {
-    <h2>@Model.SelectedChampion.Name: @Model.SelectedChampion.ID</h2>
+    <h2>@Model.SelectedChampion.Name - Champ ID: @Model.SelectedChampion.ID</h2>
 
     using (Html.BeginForm("Champion/", "Metrics", FormMethod.Get, new { @class = "form-inline" }))
     {
@@ -21,14 +27,14 @@
             {
                 @class = "form-control",
                 id = "roleGroupDrp",
-                //onchange = @"$(""#""+$(""#roleGroupDrp"")[0].options[$(""#roleGroupDrp"")[0].selectedIndex].innerHTML).removeAttr(""hidden"");"
+                onchange = @"ShowTable($(this), event)"
             })
         </div>
     }
 
-    foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
+    @*foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
     {
-        <div class="col-md-12" id="@RoleGroup.Name" @*hidden*@>
+        <div class="roleTable col-md-12" id="@RoleGroup.Name">
             <h4>Role: @RoleGroup.Name</h4>
 
             @foreach (var TimeBucket in RoleGroup.TimeBuckets)
@@ -60,5 +66,61 @@
             </table>
             }
         </div>
+    }*@
+
+    foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
+    {
+        <div class="roleTable col-md-12" id="@RoleGroup.Name">
+            <h4>Role: @RoleGroup.Name</h4>
+            <table class="table table-bordered table-centered">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th></th>
+                        <th>Early Game</th>
+                        <th>Mid Game</th>
+                        <th>Late Game</th>
+                        <th>End Game</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Farming</td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                    </tr>
+                    <tr>
+                        <td>Fighting</td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                    </tr>
+                    <tr>
+                        <td>Objective Control</td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     }
+
+    @*<div class="col-md-12">
+        <h2 class="text-center">Early Game</h2>
+        <ul class="nav nav-pills nav-stacked col-md-3">
+            <li class="nav-item"><h3>Farming</h3></li>
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#gold">Gold per minute</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#experience">Experience per minute</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#creeps">Creeps killed per minute</a></li>
+        </ul>
+        <div class="tab-content table-bordered col-md-9">
+            <div class="tab-pane active" id="gold">Gold</div>
+            <div class="tab-pane" id="experience">Experience</div>
+            <div class="tab-pane" id="creeps">Creeps</div>
+        </div>
+    </div>*@
 }
