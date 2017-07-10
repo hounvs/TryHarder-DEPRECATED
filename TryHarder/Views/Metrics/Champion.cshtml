@@ -85,7 +85,11 @@
                 <tbody>
                     <tr>
                         <td>Farming</td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
+                        <td>
+                            <a data-toggle="tab" href="#Early-Game-Farming">
+                                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" />
+                            </a>
+                        </td>
                         <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
                         <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
                         <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
@@ -107,20 +111,22 @@
                 </tbody>
             </table>
         </div>
-    }
+}
 
-    @*<div class="col-md-12">
-        <h2 class="text-center">Early Game</h2>
-        <ul class="nav nav-pills nav-stacked col-md-3">
-            <li class="nav-item"><h3>Farming</h3></li>
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#gold">Gold per minute</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#experience">Experience per minute</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#creeps">Creeps killed per minute</a></li>
-        </ul>
-        <div class="tab-content table-bordered col-md-9">
-            <div class="tab-pane active" id="gold">Gold</div>
-            <div class="tab-pane" id="experience">Experience</div>
-            <div class="tab-pane" id="creeps">Creeps</div>
+    <div class="tab-content">
+        <div class="tab-pane col-md-12" id="Early-Game-Farming">
+            <h2 class="text-center">Early Game</h2>
+            <ul class="nav nav-pills nav-stacked col-md-3">
+                <li class="nav-item"><h3>Farming</h3></li>
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#gold">Gold per minute</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#experience">Experience per minute</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#creeps">Creeps killed per minute</a></li>
+            </ul>
+            <div class="tab-content table-bordered col-md-9">
+                <div class="tab-pane active" id="gold">Gold</div>
+                <div class="tab-pane" id="experience">Experience</div>
+                <div class="tab-pane" id="creeps">Creeps</div>
+            </div>
         </div>
-    </div>*@
+    </div>
 }

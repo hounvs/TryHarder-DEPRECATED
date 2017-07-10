@@ -197,6 +197,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\HtmlExtension.cs" />
     <Compile Include="Models\ChampionModel.cs" />
     <Compile Include="Models\MetricModel.cs" />
     <Compile Include="Models\NamedModel.cs" />
@@ -241,12 +242,6 @@
     <None Include="Properties\PublishProfiles\07b76bfe-0ee0-4-231-b9ee - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\d3.v3.min.js" />
-    <Content Include="Scripts\External\jquery.easing.1.3.es5.js">
-      <DependentUpon>jquery.easing.1.3.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\External\jquery.easing.1.3.es5.min.js">
-      <DependentUpon>jquery.easing.1.3.es5.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\External\jquery.easing.1.3.js" />
     <Content Include="Scripts\horizBarChart.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
