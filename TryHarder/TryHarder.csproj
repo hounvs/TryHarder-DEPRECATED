@@ -44,14 +44,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Auth0.AspNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Auth0-ASPNET.1.5.0\lib\net45\Auth0.AspNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auth0.AuthenticationApi, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Auth0.AuthenticationApi.3.2.0\lib\portable45-net45+win8+wpa81\Auth0.AuthenticationApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auth0.Core, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Auth0.Core.3.1.1\lib\portable45-net45+win8+wpa81\Auth0.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auth0.ManagementApi, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Auth0.ManagementApi.3.1.1\lib\portable45-net45+win8+wpa81\Auth0.ManagementApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Services" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -104,6 +126,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -114,9 +140,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -166,33 +189,40 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\SessionAuthenticationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MetricsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Constants.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Champion.cs" />
-    <Compile Include="Models\Match.cs" />
-    <Compile Include="Models\LoLDb.cs" />
-    <Compile Include="Models\QueryViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Summoner.cs" />
-    <Compile Include="Models\SummonerMatchQuarter.cs" />
+    <Compile Include="Models\ChampionModel.cs" />
+    <Compile Include="Models\MetricModel.cs" />
+    <Compile Include="Models\NamedModel.cs" />
+    <Compile Include="Models\RoleGroupModel.cs" />
+    <Compile Include="Models\SummonerModel.cs" />
+    <Compile Include="Models\TimeBucketModel.cs" />
+    <Compile Include="Models\ViewModels\SummonerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Tier Icons\BronzeBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\ChallengerBadge.png" />
+    <Content Include="Content\Images\Tier Icons\DiamondBadge.png" />
+    <Content Include="Content\Images\Tier Icons\GoldBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\MasterBadge.png" />
+    <Content Include="Content\Images\Tier Icons\PlatinumBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\SilverBadgeSeason2.png" />
+    <Content Include="Content\Images\Tier Icons\UnrankedBadge.png" />
     <Content Include="Content\Images\TryHarder Logo Color.png" />
     <Content Include="Content\Images\Tryharder Logo.png" />
+    <Content Include="Content\sample.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\tether.css" />
     <Content Include="Content\tether.min.css" />
     <Content Include="favicon.ico" />
@@ -203,6 +233,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\07b76bfe-0ee0-4-231-b9ee - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\07b76bfe-0ee0-4-231-b9ee - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\d3.v3.min.js" />
     <Content Include="Scripts\horizBarChart.js" />
@@ -233,30 +265,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Search\About.cshtml" />
-    <Content Include="Views\Search\Contact.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Search\Results.cshtml" />
+    <Content Include="Views\Metrics\Index.cshtml" />
+    <Content Include="Views\Metrics\Champion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

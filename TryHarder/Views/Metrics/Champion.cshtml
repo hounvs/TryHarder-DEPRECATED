@@ -1,0 +1,64 @@
+﻿@model TryHarder.Models.ViewModels.SummonerViewModel
+
+@{
+    ViewBag.Title = "Champion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.SelectedChampion?.RoleGroups.Any() ?? false)
+{
+    <h2>@Model.SelectedChampion.Name: @Model.SelectedChampion.ID</h2>
+
+    using (Html.BeginForm("Champion/", "Metrics", FormMethod.Get, new { @class = "form-inline" }))
+    {
+        // Role Selection dropdown
+        <div class="input-group">
+            @Html.Label("Role", new { @class = "input-group-addon", @for = "roleGroupDrp" })
+            @Html.DropDownListFor(viewModel => viewModel.SelectedRoleGroup,
+            new SelectList(Model.SelectedChampion?.RoleGroups, "ID", "Name"),
+            "All",
+            new
+            {
+                @class = "form-control",
+                id = "roleGroupDrp",
+                //onchange = @"$(""#""+$(""#roleGroupDrp"")[0].options[$(""#roleGroupDrp"")[0].selectedIndex].innerHTML).removeAttr(""hidden"");"
+            })
+        </div>
+    }
+
+    foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
+    {
+        <div class="col-md-12" id="@RoleGroup.Name" @*hidden*@>
+            <h4>Role: @RoleGroup.Name</h4>
+
+            @foreach (var TimeBucket in RoleGroup.TimeBuckets)
+            {
+            <table class="table table-bordered">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th></th>
+                        <th>@TimeBucket.Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Metric in TimeBucket.Metrics)
+                    {
+                        <tr>
+                            <td>@Metric.Name</td>
+                            <td>
+                                Bin: @Metric.Bin<br />
+                                Category: @Metric.Category<br />
+                                Games: @Metric.Games<br />
+                                Grain: @Metric.Grain<br />
+                                Percent: @Metric.Percent<br />
+                                Pop: @Metric.Pop<br />
+                                Value: @Metric.Value<br />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            }
+        </div>
+    }
+}

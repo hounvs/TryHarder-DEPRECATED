@@ -1,0 +1,153 @@
+﻿<SummonerMetrics>
+  <Summoner ID="25388173" Name="GundayMonday">
+    <Champions>
+      <Champion ID="113" Name="Sejuani">
+        <RoleGroups>
+          <RoleGroup Name="Jungle">
+            <TimeBuckets>
+              <TimeBucket Name="Early Game">
+                <Metrics>
+                  <Metric Name="Earth Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="6" Percent="-1.000000" />
+                  <Metric Name="Outer Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="26" Bin="10" Percent="0.500000" Pop="10" />
+                  <Metric Name="Gold/Min" Grain="SummonerQuarter" Category="Farming" Value="309.5509" Games="58" Bin="2" Percent="0.600000" Pop="25" />
+                  <Metric Name="Wind Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="6" Bin="10" Percent="-1.000000" Pop="0" />
+                  <Metric Name="ChampionKillAssists" Grain="SummonerQuarter" Value="0.8966" Games="58" Bin="2" Percent="0.360000" Pop="25" />
+                  <Metric Name="Deaths" Grain="SummonerQuarter" Value="0.2069" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Elite Monster Kills" Grain="SummonerQuarter" Value="0.2069" Games="58" Bin="2" Percent="0.920000" Pop="25" />
+                  <Metric Name="Exp/Min" Grain="SummonerQuarter" Category="Farming" Value="320.0948" Games="58" Bin="6" Percent="0.440000" Pop="25" />
+                  <Metric Name="Fire Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="16" Percent="-1.000000" />
+                  <Metric Name="Building Kills" Grain="SummonerQuarter" Value="0.0172" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="BuildingKillAssists" Grain="SummonerQuarter" Value="0.0345" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Champion Kills" Grain="SummonerQuarter" Value="0.7241" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Fire Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="16" Bin="10" Percent="0.500000" Pop="2" />
+                  <Metric Name="Neutral Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.0690" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Outer Towers Count" Grain="TeamQuarter" Value="0.5385" Games="26" Percent="-1.000000" />
+                  <Metric Name="Bad Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.1207" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Creeps/Min" Grain="SummonerQuarter" Category="Farming" Value="4.5155" Games="58" Bin="7" Percent="0.640000" Pop="25" />
+                  <Metric Name="Deaths By Jungler" Grain="SummonerQuarter" Category="Fighting" Value="0.1552" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Earth Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="6" Bin="10" Percent="-1.000000" Pop="0" />
+                  <Metric Name="Good Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.0172" Games="58" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Water Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="8" Bin="10" Percent="0.500000" Pop="4" />
+                  <Metric Name="Water Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="8" Percent="-1.000000" />
+                  <Metric Name="Wind Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="6" Percent="-1.000000" />
+                </Metrics>
+              </TimeBucket>
+              <TimeBucket Name="End Game">
+                <Metrics>
+                  <Metric Name="Bad Deaths" Grain="SummonerQuarter" Category="Fighting" Value="1.0667" Games="30" Bin="3" Percent="0.769200" Pop="13" />
+                  <Metric Name="Champion Kills" Grain="SummonerQuarter" Value="1.3000" Games="30" Bin="2" Percent="0.615400" Pop="13" />
+                  <Metric Name="Creeps/Min" Grain="SummonerQuarter" Category="Farming" Value="4.0092" Games="30" Bin="5" Percent="0.538500" Pop="13" />
+                  <Metric Name="Earth Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="8" Percent="-1.000000" />
+                  <Metric Name="Good Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.2667" Games="30" Bin="1" Percent="0.000000" Pop="13" />
+                  <Metric Name="Inhibitor Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="56" Bin="10" Percent="0.500000" Pop="22" />
+                  <Metric Name="Elder Dragon Count" Grain="TeamQuarter" Value="0.5833" Games="12" Percent="-1.000000" />
+                  <Metric Name="Inhibitor Towers Count" Grain="TeamQuarter" Value="1.0536" Games="56" Percent="-1.000000" />
+                  <Metric Name="Outer Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="6" Bin="10" Percent="0.500000" Pop="12" />
+                  <Metric Name="Water Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="14" Percent="-1.000000" />
+                  <Metric Name="Wind Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="8" Percent="-1.000000" />
+                  <Metric Name="ChampionKillAssists" Grain="SummonerQuarter" Value="3.5000" Games="30" Bin="3" Percent="0.538500" Pop="13" />
+                  <Metric Name="Earth Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="8" Bin="10" Percent="0.500000" Pop="6" />
+                  <Metric Name="Outer Towers Count" Grain="TeamQuarter" Value="0.6667" Games="6" Percent="-1.000000" />
+                  <Metric Name="Baron Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="34" Bin="10" Percent="0.428600" Pop="14" />
+                  <Metric Name="Deaths" Grain="SummonerQuarter" Value="1.5000" Games="30" Bin="3" Percent="0.692300" Pop="13" />
+                  <Metric Name="Exp/Min" Grain="SummonerQuarter" Category="Farming" Value="476.6122" Games="30" Bin="4" Percent="0.461500" Pop="13" />
+                  <Metric Name="Inner Towers Count" Grain="TeamQuarter" Value="0.8000" Games="40" Percent="-1.000000" />
+                  <Metric Name="Water Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="14" Bin="10" Percent="0.500000" Pop="2" />
+                  <Metric Name="Baron Count" Grain="TeamQuarter" Value="0.6471" Games="34" Percent="-1.000000" />
+                  <Metric Name="Building Kills" Grain="SummonerQuarter" Value="0.2333" Games="30" Bin="1" Percent="0.000000" Pop="13" />
+                  <Metric Name="Elite Monster Kills" Grain="SummonerQuarter" Value="0.3667" Games="30" Bin="2" Percent="0.692300" Pop="13" />
+                  <Metric Name="Fire Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="8" Bin="10" Percent="0.500000" Pop="6" />
+                  <Metric Name="Fire Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="8" Percent="-1.000000" />
+                  <Metric Name="Gold/Min" Grain="SummonerQuarter" Category="Farming" Value="367.0209" Games="30" Bin="2" Percent="0.307700" Pop="13" />
+                  <Metric Name="BuildingKillAssists" Grain="SummonerQuarter" Value="1.1667" Games="30" Bin="2" Percent="0.538500" Pop="13" />
+                  <Metric Name="Deaths By Jungler" Grain="SummonerQuarter" Category="Fighting" Value="1.2333" Games="30" Bin="4" Percent="0.846200" Pop="13" />
+                  <Metric Name="Elder Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="12" Bin="10" Percent="0.500000" Pop="6" />
+                  <Metric Name="Inner Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="40" Bin="10" Percent="0.437500" Pop="16" />
+                  <Metric Name="Neutral Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.1667" Games="30" Bin="1" Percent="0.000000" Pop="13" />
+                  <Metric Name="Wind Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="8" Bin="10" Percent="0.500000" Pop="2" />
+                </Metrics>
+              </TimeBucket>
+              <TimeBucket Name="Game">
+                <Metrics>
+                  <Metric Name="Duration In Seconds" Grain="SummonerQuarter" Value="1845.4138" Games="58" Percent="-1.000000" />
+                  <Metric Name="First Blood Control Ratio" Grain="TeamMatch" Category="Objective Control" Value="0.4914" Games="116" Bin="10" Percent="0.520000" Pop="50" />
+                  <Metric Name="Rift Herald Control Ratio" Grain="TeamMatch" Category="Objective Control" Value="0.5000" Games="52" Bin="10" Percent="0.500000" Pop="18" />
+                  <Metric Name="Time to First Dragon" Grain="TeamMatch" Category="Efficiency" Value="869.5000" Games="82" Bin="8" Percent="0.416700" Pop="36" />
+                  <Metric Name="Time to First Baron" Grain="TeamMatch" Category="Efficiency" Value="1613.7059" Games="51" Bin="14" Percent="0.350000" Pop="20" />
+                  <Metric Name="Time to First Tower" Grain="TeamMatch" Category="Efficiency" Value="846.7172" Games="99" Bin="8" Percent="0.456500" Pop="46" />
+                  <Metric Name="First Tower Control Ratio" Grain="TeamMatch" Category="Objective Control" Value="0.4035" Games="114" Bin="9" Percent="0.680000" Pop="50" />
+                  <Metric Name="Time to Defeat All Outer Towers" Grain="TeamMatch" Category="Efficiency" Value="1226.8500" Games="80" Bin="11" Percent="0.400000" Pop="35" />
+                  <Metric Name="Time to First Inhibitor" Grain="TeamMatch" Category="Efficiency" Value="1691.0656" Games="61" Bin="15" Percent="0.500000" Pop="26" />
+                </Metrics>
+              </TimeBucket>
+              <TimeBucket Name="Late Game">
+                <Metrics>
+                  <Metric Name="Fire Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="28" Bin="10" Percent="0.500000" Pop="8" />
+                  <Metric Name="Gold/Min" Grain="SummonerQuarter" Category="Farming" Value="404.2534" Games="56" Bin="2" Percent="0.041700" Pop="24" />
+                  <Metric Name="Good Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.1786" Games="56" Bin="1" Percent="0.000000" Pop="24" />
+                  <Metric Name="Inner Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="90" Bin="11" Percent="0.547600" Pop="42" />
+                  <Metric Name="Wind Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="30" Bin="10" Percent="0.500000" Pop="20" />
+                  <Metric Name="Creeps/Min" Grain="SummonerQuarter" Category="Farming" Value="5.1754" Games="56" Bin="6" Percent="0.666700" Pop="24" />
+                  <Metric Name="Deaths By Jungler" Grain="SummonerQuarter" Category="Fighting" Value="0.9286" Games="56" Bin="3" Percent="0.458300" Pop="24" />
+                  <Metric Name="Exp/Min" Grain="SummonerQuarter" Category="Farming" Value="487.0475" Games="56" Bin="5" Percent="0.166700" Pop="24" />
+                  <Metric Name="Fire Dragon Count" Grain="TeamQuarter" Value="0.5357" Games="28" Percent="-1.000000" />
+                  <Metric Name="Inhibitor Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="72" Bin="10" Percent="0.500000" Pop="30" />
+                  <Metric Name="Water Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="28" Bin="10" Percent="0.500000" Pop="10" />
+                  <Metric Name="Baron Count" Grain="TeamQuarter" Value="0.5135" Games="74" Percent="-1.000000" />
+                  <Metric Name="Champion Kills" Grain="SummonerQuarter" Value="1.7679" Games="56" Bin="2" Percent="0.583300" Pop="24" />
+                  <Metric Name="ChampionKillAssists" Grain="SummonerQuarter" Value="3.3929" Games="56" Bin="4" Percent="0.250000" Pop="24" />
+                  <Metric Name="Earth Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="22" Bin="10" Percent="0.500000" Pop="10" />
+                  <Metric Name="Elite Monster Kills" Grain="SummonerQuarter" Value="0.4643" Games="56" Bin="2" Percent="0.291700" Pop="24" />
+                  <Metric Name="Inhibitor Towers Count" Grain="TeamQuarter" Value="0.7361" Games="72" Percent="-1.000000" />
+                  <Metric Name="Inner Towers Count" Grain="TeamQuarter" Value="1.0444" Games="90" Percent="-1.000000" />
+                  <Metric Name="Building Kills" Grain="SummonerQuarter" Value="0.3036" Games="56" Bin="1" Percent="0.000000" Pop="24" />
+                  <Metric Name="Neutral Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.2321" Games="56" Bin="1" Percent="0.000000" Pop="24" />
+                  <Metric Name="Bad Deaths" Grain="SummonerQuarter" Category="Fighting" Value="1.0000" Games="56" Bin="2" Percent="0.666700" Pop="24" />
+                  <Metric Name="BuildingKillAssists" Grain="SummonerQuarter" Value="0.8571" Games="56" Bin="2" Percent="0.541700" Pop="24" />
+                  <Metric Name="Outer Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="62" Bin="10" Percent="0.366700" Pop="30" />
+                  <Metric Name="Outer Towers Count" Grain="TeamQuarter" Value="1.0161" Games="62" Percent="-1.000000" />
+                  <Metric Name="Wind Dragon Count" Grain="TeamQuarter" Value="0.5333" Games="30" Percent="-1.000000" />
+                  <Metric Name="Baron Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="74" Bin="10" Percent="0.500000" Pop="28" />
+                  <Metric Name="Deaths" Grain="SummonerQuarter" Value="1.4107" Games="56" Bin="3" Percent="0.583300" Pop="24" />
+                  <Metric Name="Earth Dragon Count" Grain="TeamQuarter" Value="0.5455" Games="22" Percent="-1.000000" />
+                  <Metric Name="Water Dragon Count" Grain="TeamQuarter" Value="0.5357" Games="28" Percent="-1.000000" />
+                </Metrics>
+              </TimeBucket>
+              <TimeBucket Name="Mid Game">
+                <Metrics>
+                  <Metric Name="BuildingKillAssists" Grain="SummonerQuarter" Value="0.4386" Games="57" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Deaths" Grain="SummonerQuarter" Value="1.1579" Games="57" Bin="3" Percent="0.640000" Pop="25" />
+                  <Metric Name="Gold/Min" Grain="SummonerQuarter" Category="Farming" Value="383.8624" Games="57" Bin="2" Percent="0.000000" Pop="25" />
+                  <Metric Name="Bad Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.7368" Games="57" Bin="2" Percent="0.480000" Pop="25" />
+                  <Metric Name="Building Kills" Grain="SummonerQuarter" Value="0.0877" Games="57" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Fire Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="36" Bin="10" Percent="0.500000" Pop="14" />
+                  <Metric Name="Water Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="38" Bin="10" Percent="0.500000" Pop="8" />
+                  <Metric Name="Creeps/Min" Grain="SummonerQuarter" Category="Farming" Value="5.8160" Games="57" Bin="7" Percent="0.760000" Pop="25" />
+                  <Metric Name="Deaths By Jungler" Grain="SummonerQuarter" Category="Fighting" Value="0.6667" Games="57" Bin="2" Percent="0.440000" Pop="25" />
+                  <Metric Name="Elite Monster Kills" Grain="SummonerQuarter" Value="0.7895" Games="57" Bin="3" Percent="0.600000" Pop="25" />
+                  <Metric Name="Good Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.2982" Games="57" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="Inhibitor Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="14" Bin="10" Percent="0.500000" Pop="6" />
+                  <Metric Name="Earth Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="44" Bin="10" Percent="0.500000" Pop="8" />
+                  <Metric Name="Earth Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="44" Percent="-1.000000" />
+                  <Metric Name="Fire Dragon Count" Grain="TeamQuarter" Value="0.5833" Games="36" Percent="-1.000000" />
+                  <Metric Name="Inner Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="64" Bin="10" Percent="0.500000" Pop="30" />
+                  <Metric Name="Outer Towers Count" Grain="TeamQuarter" Value="1.6491" Games="114" Percent="-1.000000" />
+                  <Metric Name="Champion Kills" Grain="SummonerQuarter" Value="1.4737" Games="57" Bin="2" Percent="0.560000" Pop="25" />
+                  <Metric Name="Inhibitor Towers Count" Grain="TeamQuarter" Value="0.7143" Games="14" Percent="-1.000000" />
+                  <Metric Name="Neutral Deaths" Grain="SummonerQuarter" Category="Fighting" Value="0.1228" Games="57" Bin="1" Percent="0.000000" Pop="25" />
+                  <Metric Name="ChampionKillAssists" Grain="SummonerQuarter" Value="2.6667" Games="57" Bin="4" Percent="0.360000" Pop="25" />
+                  <Metric Name="Exp/Min" Grain="SummonerQuarter" Category="Farming" Value="483.2591" Games="57" Bin="7" Percent="0.440000" Pop="25" />
+                  <Metric Name="Inner Towers Count" Grain="TeamQuarter" Value="0.8594" Games="64" Percent="-1.000000" />
+                  <Metric Name="Outer Towers Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="114" Bin="10" Percent="0.460000" Pop="50" />
+                  <Metric Name="Water Dragon Count" Grain="TeamQuarter" Value="0.5526" Games="38" Percent="-1.000000" />
+                  <Metric Name="Wind Dragon Control Ratio" Grain="TeamQuarter" Category="Objective Control" Value="0.5000" Games="28" Bin="10" Percent="0.500000" Pop="24" />
+                  <Metric Name="Wind Dragon Count" Grain="TeamQuarter" Value="0.5000" Games="28" Percent="-1.000000" />
+                </Metrics>
+              </TimeBucket>
+            </TimeBuckets>
+          </RoleGroup>
+        </RoleGroups>
+      </Champion>
+    </Champions>
+  </Summoner>
+</SummonerMetrics>

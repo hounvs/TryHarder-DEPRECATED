@@ -15,8 +15,8 @@ namespace TryHarder
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Search", action = "Index", id = UrlParameter.Optional }
+                url: "{action}/{id}",
+                defaults: new { controller = "Metrics", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

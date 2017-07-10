@@ -1,0 +1,24 @@
+﻿@model TryHarder.Models.IndexViewModel
+@using System.Security.Claims;
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    @{
+        foreach (Claim claim in ClaimsPrincipal.Current.Claims)
+        {
+            @claim.Type
+            <br />
+
+            @claim.Value
+            <br />
+
+            @claim.ValueType
+            <hr />
+        }
+    }
+</div>

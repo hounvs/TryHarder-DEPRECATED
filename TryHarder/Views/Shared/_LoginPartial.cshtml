@@ -1,17 +1,36 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-    {
-        @Html.AntiForgeryToken()
-        <li class="nav-item active">
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
-        </li>
-        <li class="nav-item active"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a></li>
+﻿@using System.Security.Claims;
+@using System.Configuration;
+
+<script src="https://cdn.auth0.com/js/lock-9.1.min.js"></script>
+<script type="text/javascript">
+    var lock = new Auth0Lock('@ConfigurationManager.AppSettings["auth0:ClientId"]', '@ConfigurationManager.AppSettings["auth0:Domain"]');
+
+    function signin() {
+        lock.show({
+            callbackURL: 'http://localhost:55484/LoginCallback.ashx'
+            , responseType: 'code'
+            , authParams: {
+            scope: 'openid email'  // Learn about scopes: https://auth0.com/docs/scopes
+            }
+        });
     }
+</script>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <li class="nav-item">
+        @Html.ActionLink("Logout", "Logout", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("Hello " + ClaimsPrincipal.Current.FindFirst("nickname").Value + "!", "Index", "Account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+    </li>
+    <li class="nav-item">
+        <img src="@ClaimsPrincipal.Current.FindFirst("picture").Value" height="32" />
+    </li>
 }
 else
 {
-    <li class="nav-item active">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
-    <li class="nav-item active">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    <li class="nav-item">
+        <a href="#" class="nav-link" onclick="window.signin();">Login</a>
+    </li>
 }
