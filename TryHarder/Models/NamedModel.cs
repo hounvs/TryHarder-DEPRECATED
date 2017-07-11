@@ -14,6 +14,11 @@
             set { name = value; }
         }
 
+        public string ProgrammaticName
+        {
+            get { return name.Replace(' ', '-').Replace('/','_'); }
+        }
+
         public int ID
         {
             get { return id; }

@@ -14,7 +14,7 @@
         // Champion Selection dropdown
         <div class="input-group">
             @Html.Label("Champion", new { @class = "input-group-addon", @for = "championDrp" })
-            @Html.DropDownList("ChampionId",
+            @Html.DropDownList("Id",
                 new SelectList(Model.Summoner.Champions, "ID", "Name"), "All",
                 new { @class = "form-control", id = "championDrp" }
             )

@@ -13,6 +13,15 @@
 
 @if (Model.SelectedChampion?.RoleGroups.Any() ?? false)
 {
+    // Get list of categories
+    IEnumerable<string> categories = 
+        Model.SelectedChampion?
+        .RoleGroups.FirstOrDefault()
+        .TimeBuckets.FirstOrDefault()
+        .Metrics
+        .Select(m => m.Category)
+        .Distinct();
+
     <h2>@Model.SelectedChampion.Name - Champ ID: @Model.SelectedChampion.ID</h2>
 
     using (Html.BeginForm("Champion/", "Metrics", FormMethod.Get, new { @class = "form-inline" }))
@@ -32,101 +41,90 @@
         </div>
     }
 
-    @*foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
+    foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
     {
-        <div class="roleTable col-md-12" id="@RoleGroup.Name">
+        <div class="roleTable col-md-12" id="@RoleGroup.ProgrammaticName-Table">
             <h4>Role: @RoleGroup.Name</h4>
-
-            @foreach (var TimeBucket in RoleGroup.TimeBuckets)
-            {
-            <table class="table table-bordered">
+            <table class="table table-bordered table-centered table-sm">
                 <thead class="thead-inverse">
                     <tr>
                         <th></th>
-                        <th>@TimeBucket.Name</th>
+                        @foreach (var TimeBucket in RoleGroup.TimeBuckets)
+                        {
+                            <th>@TimeBucket.Name</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var Metric in TimeBucket.Metrics)
+                    @foreach (var Category in categories)
                     {
                         <tr>
-                            <td>@Metric.Name</td>
-                            <td>
-                                Bin: @Metric.Bin<br />
-                                Category: @Metric.Category<br />
-                                Games: @Metric.Games<br />
-                                Grain: @Metric.Grain<br />
-                                Percent: @Metric.Percent<br />
-                                Pop: @Metric.Pop<br />
-                                Value: @Metric.Value<br />
-                            </td>
+                            <th>@Category</th>
+                            @foreach (var TimeBucket in RoleGroup.TimeBuckets)
+                            {
+                                <td>
+                                    <a data-toggle="modal" href="#@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-Pane">
+                                        <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+                                    </a>
+                                </td>
+                            }
                         </tr>
                     }
                 </tbody>
             </table>
+        </div>
+
+        <div class="tab-content">
+            @foreach (var TimeBucket in RoleGroup.TimeBuckets)
+            {
+
+                // Create list of Category panes
+                foreach (string Category in categories)
+                {
+                    // Create list of metrics for this category
+                    var metricList = TimeBucket.Metrics.Where(m => m.Category?.Equals(Category) ?? false);
+                    <div class="modal fade" id="@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-Pane"
+                         tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">@TimeBucket.Name</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="clearfix">
+                                        <ul class="nav nav-pills nav-stacked col-md-3">
+                                            <li class="nav-item"><h5>@Category</h5></li>
+                                            @foreach (var Metric in metricList)
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-@Metric.ProgrammaticName-Pane">@Metric.Name</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="tab-content col-md-9">
+                                            @foreach (var Metric in metricList)
+                                            {
+                                                <div class="tab-pane" id="@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-@Metric.ProgrammaticName-Pane">
+                                                    Bin: @Metric.Bin<br />
+                                                    Category: @Metric.Category<br />
+                                                    Games: @Metric.Games<br />
+                                                    Grain: @Metric.Grain<br />
+                                                    Percent: @Metric.Percent<br />
+                                                    Pop: @Metric.Pop<br />
+                                                    Value: @Metric.Value<br />
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
             }
         </div>
-    }*@
-
-    foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
-    {
-        <div class="roleTable col-md-12" id="@RoleGroup.Name">
-            <h4>Role: @RoleGroup.Name</h4>
-            <table class="table table-bordered table-centered">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th></th>
-                        <th>Early Game</th>
-                        <th>Mid Game</th>
-                        <th>Late Game</th>
-                        <th>End Game</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Farming</td>
-                        <td>
-                            <a data-toggle="tab" href="#Early-Game-Farming">
-                                <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" />
-                            </a>
-                        </td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                    </tr>
-                    <tr>
-                        <td>Fighting</td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                    </tr>
-                    <tr>
-                        <td>Objective Control</td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                        <td><img src="~/Content/Images/Tier Icons/UnrankedBadge.png" /></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-}
-
-    <div class="tab-content">
-        <div class="tab-pane col-md-12" id="Early-Game-Farming">
-            <h2 class="text-center">Early Game</h2>
-            <ul class="nav nav-pills nav-stacked col-md-3">
-                <li class="nav-item"><h3>Farming</h3></li>
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#gold">Gold per minute</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#experience">Experience per minute</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#creeps">Creeps killed per minute</a></li>
-            </ul>
-            <div class="tab-content table-bordered col-md-9">
-                <div class="tab-pane active" id="gold">Gold</div>
-                <div class="tab-pane" id="experience">Experience</div>
-                <div class="tab-pane" id="creeps">Creeps</div>
-            </div>
-        </div>
-    </div>
+    }
 }

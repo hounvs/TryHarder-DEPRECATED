@@ -14,7 +14,7 @@ function ShowTable(dropDownList, event) {
     // Hide all tables
     HideAllRoleTables();
     // Un-hide desired table
-    $("#" + selectedRole).show(1000, "easeOutQuad", null);
+    $("#" + selectedRole + "-Table").show(1000, "easeOutQuad", null);
 }
 
 (
