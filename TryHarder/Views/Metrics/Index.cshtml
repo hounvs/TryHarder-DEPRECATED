@@ -7,16 +7,17 @@
 
 
 <div class="col-md-12 text-center">
-    <h2>@Model.Summoner.Name: @Model.Summoner.ID</h2>
+    <h2>@Model.Summoner.Name - Summoner ID: @Model.Summoner.ID</h2>
 
     @using (Html.BeginForm("Champion/", "Metrics", FormMethod.Get, new { @class = "form-inline" }))
     {
         // Champion Selection dropdown
         <div class="input-group">
             @Html.Label("Champion", new { @class = "input-group-addon", @for = "championDrp" })
-            @Html.DropDownListFor(Model => Model.SelectedChampion.ID,
-                new SelectList(Model.Summoner.Champions, "ID", "Name"),
-                "All", new { @class = "form-control", id = "championDrp" })
+            @Html.DropDownList("Id",
+                new SelectList(Model.Summoner.Champions, "ID", "Name"), "All",
+                new { @class = "form-control", id = "championDrp" }
+            )
         </div>
 
         <button type="submit" class="btn btn-sm btn-primary">Go!</button>
