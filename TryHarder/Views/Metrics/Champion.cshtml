@@ -3,7 +3,7 @@
 @section Scripts
 {
     <script src="@Url.Content("~/Scripts/External/jquery.easing.1.3.js")"></script>
-    <script src="@Url.Content("~/Scripts/Site/Champion.js")"></script>
+    <script src="@Url.Content("~/Scripts/Site.js")"></script>
 }
 
 @{
@@ -23,108 +23,116 @@
         .Distinct();
 
     <h2>@Model.SelectedChampion.Name - Champ ID: @Model.SelectedChampion.ID</h2>
+    
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#All-Table" role="tab">All</a>
+        </li>
+        @foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
+        {
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#@RoleGroup.ProgrammaticName-Table" role="tab">
+                    @RoleGroup.Name
+                </a>
+            </li>
+        }
+    </ul>
 
-    using (Html.BeginForm("Champion/", "Metrics", FormMethod.Get, new { @class = "form-inline" }))
-    {
-        // Role Selection dropdown
-        <div class="input-group">
-            @Html.Label("Role", new { @class = "input-group-addon", @for = "roleGroupDrp" })
-            @Html.DropDownListFor(viewModel => viewModel.SelectedRoleGroup,
-            new SelectList(Model.SelectedChampion?.RoleGroups, "ID", "Name"),
-            "All",
-            new
-            {
-                @class = "form-control",
-                id = "roleGroupDrp",
-                onchange = @"ShowTable($(this), event)"
-            })
+    <div class="tab-content">
+        @* All Roles *@
+        <div class="tab-pane col-md-12 active" id="All-Table" role="tabpanel">
+            Placeholder for overall scores
         </div>
-    }
 
-    foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
-    {
-        <div class="roleTable col-md-12" id="@RoleGroup.ProgrammaticName-Table">
-            <h4>Role: @RoleGroup.Name</h4>
-            <table class="table table-bordered table-centered table-sm">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th></th>
-                        @foreach (var TimeBucket in RoleGroup.TimeBuckets)
-                        {
-                            <th>@TimeBucket.Name</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var Category in categories)
-                    {
+        @foreach (var RoleGroup in Model.SelectedChampion.RoleGroups)
+        {
+            // Role Tables
+            <div class="tab-pane col-md-12" id="@RoleGroup.ProgrammaticName-Table" role="tabpanel">
+                <table class="table table-bordered table-centered table-sm">
+                    @* TimeBucket Headers *@
+                    <thead class="thead-inverse">
                         <tr>
-                            <th>@Category</th>
+                            <th></th>
                             @foreach (var TimeBucket in RoleGroup.TimeBuckets)
                             {
-                                <td>
-                                    <a data-toggle="modal" href="#@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-Pane">
-                                        <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
-                                    </a>
-                                </td>
+                                <th>@TimeBucket.Name</th>
                             }
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    @* Category Rows *@
+                    <tbody>
+                        @foreach (var Category in categories)
+                        {
+                            <tr>
+                                <th>@Category</th>
+                                @* TimeBucket/Category Ranking *@
+                                @foreach (var TimeBucket in RoleGroup.TimeBuckets)
+                                {
+                                    <td>
+                                        <a data-toggle="modal" href="#@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@(Category?.Replace(' ', '-'))-Pane">
+                                            <img src="~/Content/Images/Tier Icons/UnrankedBadge.png" class="tier-icon" />
+                                        </a>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="tab-content">
-            @foreach (var TimeBucket in RoleGroup.TimeBuckets)
-            {
-
-                // Create list of Category panes
-                foreach (string Category in categories)
+            <div class="tab-content">
+                @foreach (var TimeBucket in RoleGroup.TimeBuckets)
                 {
-                    // Create list of metrics for this category
-                    var metricList = TimeBucket.Metrics.Where(m => m.Category?.Equals(Category) ?? false);
-                    <div class="modal fade" id="@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-Pane"
-                         tabindex="-1" role="dialog">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title">@TimeBucket.Name</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="clearfix">
-                                        <ul class="nav nav-pills nav-stacked col-md-3">
-                                            <li class="nav-item"><h5>@Category</h5></li>
-                                            @foreach (var Metric in metricList)
-                                            {
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-@Metric.ProgrammaticName-Pane">@Metric.Name</a>
-                                                </li>
-                                            }
-                                        </ul>
-                                        <div class="tab-content col-md-9">
-                                            @foreach (var Metric in metricList)
-                                            {
-                                                <div class="tab-pane" id="@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@Category-@Metric.ProgrammaticName-Pane">
-                                                    Bin: @Metric.Bin<br />
-                                                    Category: @Metric.Category<br />
-                                                    Games: @Metric.Games<br />
-                                                    Grain: @Metric.Grain<br />
-                                                    Percent: @Metric.Percent<br />
-                                                    Pop: @Metric.Pop<br />
-                                                    Value: @Metric.Value<br />
-                                                </div>
-                                            }
+
+                    // Create list of Category panes
+                    foreach (string Category in categories)
+                    {
+                        // Create list of metrics for this category
+                        var metricList = TimeBucket.Metrics.Where(m => m.Category?.Equals(Category) ?? false);
+                        <div class="modal fade in" id="@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@(Category?.Replace(' ', '-'))-Pane"
+                             tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title">@RoleGroup.Name - @TimeBucket.Name</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="clearfix">
+                                            <ul class="nav nav-pills nav-stacked col-md-3">
+                                                <li class="nav-item"><h5>@Category</h5></li>
+                                                @foreach (var Metric in metricList)
+                                                {
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@(Category?.Replace(' ', '-'))-@Metric.ProgrammaticName-Pane">@Metric.Name</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                            <div class="tab-content col-md-9">
+                                                @foreach (var Metric in metricList)
+                                                {
+                                                    <div class="tab-pane" id="@RoleGroup.ProgrammaticName-@TimeBucket.ProgrammaticName-@(Category?.Replace(' ', '-'))-@Metric.ProgrammaticName-Pane">
+                                                        Bin: @Metric.Bin<br />
+                                                        Category: @Metric.Category<br />
+                                                        Games: @Metric.Games<br />
+                                                        Grain: @Metric.Grain<br />
+                                                        Percent: @Metric.Percent<br />
+                                                        Pop: @Metric.Pop<br />
+                                                        Value: @Metric.Value<br />
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
-            }
-        </div>
-    }
+            </div>
+        }
+    </div>
 }
